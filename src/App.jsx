@@ -1,10 +1,6 @@
 import "./App.css";
-import {
-  NavBar,
-  HeroSection,
-  Footer,
-  ArticleSection,
-} from "./components/LandingPage";
+import { NavBar, HeroSection, Footer } from "./components/LandingPage";
+import { ArticleSection } from "./components/ArticleSection";
 
 function App() {
   return (
