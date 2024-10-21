@@ -1,16 +1,16 @@
 export function HeroSection() {
   return (
     <main className="bg-[#F9F8F6] px-4 py-10 md:py-16 mx-auto">
-      <div className="flex flex-col items-center md:flex-row md:items-center md:gap-14">
-        <div className="md:w-1/3 mb-8 md:mb-0 md:pr-8">
-          <h1 className="text-4xl text-[#26231E] sm:text-center md:text-6xl md:text-right font-bold mb-4">
+      <div className="flex flex-col items-center md:flex-row md:items-center md:gap-14 md:px-32">
+        <div className="md:w-1/3 mb-8 md:mb-0 ">
+          <h1 className="text-4xl text-[#26231E]  md:text-6xl md:text-right font-bold mb-10">
             Stay <br className="hidden md:block" />
             Informed, <br />
             Stay Inspired
           </h1>
-          <p className="text-[#75716B] text-lg md:text-right">
-            Discover a World of Knowledge at Your Fingertips. <br /> Your Daily
-            Dose of Inspiration and Information.
+          <p className="text-[#75716B] text-lg ">
+            Discover a World of Knowledge at Your Fingertips. Your Daily Dose of
+            Inspiration and Information.
           </p>
         </div>
         <img
@@ -18,7 +18,7 @@ export function HeroSection() {
           alt="Man with a cat"
           className="h-[530px] object-cover rounded-lg shadow-lg md:w-96 mx-4 mb-8 md:mb-0 "
         />
-        <div className="md:w-1/3 mb-8 md:mb-0 md:pr-8">
+        <div className="md:w-1/3 mb-8 md:mb-0 ">
           <h4 className="text-xs text-[#75716B] mb-2">-Author</h4>
           <h2 className="text-2xl text-[#26231E] font-bold mb-4">
             Thompson P.
@@ -96,5 +96,70 @@ export function Footer() {
         </a>
       </div>
     </footer>
+  );
+}
+
+import { Search } from "lucide-react";
+import { Input } from "./ui/input";
+import * as React from "react";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+export function ArticleSection() {
+  return (
+    <div className="bg-[#F9F8F6] md:px-32">
+      <h2 className="text-2xl text-[#26231E] font-bold mb-4 px-4">
+        Latest articles
+      </h2>
+      <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center md:h-20 md:rounded-2xl">
+        <div className="md:flex md:justify-between md:items-center">
+          <div className="hidden md:flex gap-2">
+            <button className="text-[#75716B] h-12 px-4 py-3 rounded-2xl  bg-[#DAD6D1]">
+              Highlight
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-3 rounded-2xl">
+              Cat
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-3 rounded-2xl">
+              Inspiration
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-3 rounded-2xl">
+              General
+            </button>
+          </div>
+          <div className="w-full md:max-w-sm">
+            <Input
+              type="text"
+              placeholder="Search"
+              className="w-80 mb-4 md:mb-0 gap-4"
+            />
+          </div>
+        </div>
+        <div className="md:hidden w-full">
+          <h6 className="px-1 text-[#75716B]">Category</h6>
+          <Select>
+            <SelectTrigger className="w-80">
+              <SelectValue placeholder="Highlight" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Select category</SelectLabel>
+                <SelectItem value="Cat">Cat</SelectItem>
+                <SelectItem value="Inspiration">Inspiration</SelectItem>
+                <SelectItem value="General">General</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </div>
   );
 }
