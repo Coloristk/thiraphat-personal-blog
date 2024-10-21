@@ -1,12 +1,12 @@
 import "./App.css";
-import NavBar from "./components/Navbar";
-import HeroSection from "./components/Herosection";
+import { NavBar, HeroSection, Footer } from "./components/LandingPage";
 
 function App() {
   return (
     <>
       <NavBar />
       <HeroSection />
+      <Footer />
     </>
   );
 }
