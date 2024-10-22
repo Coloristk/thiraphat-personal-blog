@@ -30,42 +30,17 @@ function ArticleSection() {
           <div className="hidden md:flex gap-2 font-medium m-3 justify-center items-center">
             <Tabs className="h-12 w-28 px-4 rounded-2xl ">
               <TabsList className=" bg-[#EFEEEB] gap-10 ">
-                <TabsTrigger
-                  value="Hilight"
-                  className="text-[#75716B] text-base "
-                >
-                  Hilight
-                </TabsTrigger>
-                <TabsTrigger value="Cat" className="text-[#75716B] text-base">
-                  Cat
-                </TabsTrigger>
-                <TabsTrigger
-                  value="Inspiration"
-                  className="text-[#75716B] text-base"
-                >
-                  Inspiration
-                </TabsTrigger>
-                <TabsTrigger
-                  value="General"
-                  className="text-[#75716B] text-base"
-                >
-                  General
-                </TabsTrigger>
+                {category.map((Tabs) => (
+                  <TabsTrigger
+                    key={Tabs}
+                    value={Tabs}
+                    className="text-[#75716B] text-base"
+                  >
+                    {Tabs}
+                  </TabsTrigger>
+                ))}
               </TabsList>
             </Tabs>
-            {/* <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl  bg-[#DAD6D1]">
-              Highlight
-            </button>
-            {category.slice(1).map((tab) => {
-              return (
-                <button
-                  key={tab}
-                  className="text-[#75716B] h-12 px-4 py-2 rounded-2xl"
-                >
-                  {tab}
-                </button>
-              );
-            })} */}
           </div>
           <div className="relative md:mt-3 md:flex">
             <Input
@@ -140,12 +115,12 @@ export function BlogCard({
           </span>
         </div>
         <a>
-          <h2 className="font-semibold text-xl ">{title}</h2>
+          <h2 className="font-semibold text-xl px-1">{title}</h2>
         </a>
-        <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-3">
+        <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-3 px-1">
           {description}
         </p>
-        <div className="flex items-center text-sm mb-5">
+        <div className="flex items-center text-sm mb-5 px-1">
           <img
             src={authorImage}
             alt={author}
