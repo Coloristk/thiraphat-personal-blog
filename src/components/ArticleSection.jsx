@@ -3,6 +3,7 @@ import { Input } from "./ui/input";
 import * as React from "react";
 import { blogPosts } from "./data/blogPost";
 import authorImage from "../assets/author-image.jpg";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
   Select,
@@ -24,10 +25,35 @@ function ArticleSection() {
       <h2 className="text-2xl text-[#26231E] font-semibold mb-4 px-4">
         Latest articles
       </h2>
-      <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center mb-5 md:rounded-2xl">
+      <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center mb-5 md:rounded-2xl md:h-28">
         <div className="md:flex md:justify-between md:items-center">
           <div className="hidden md:flex gap-2 font-medium m-3 justify-center items-center">
-            <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl  bg-[#DAD6D1]">
+            <Tabs className="h-12 w-28 px-4 rounded-2xl ">
+              <TabsList className=" bg-[#EFEEEB] gap-10 ">
+                <TabsTrigger
+                  value="Hilight"
+                  className="text-[#75716B] text-base "
+                >
+                  Hilight
+                </TabsTrigger>
+                <TabsTrigger value="Cat" className="text-[#75716B] text-base">
+                  Cat
+                </TabsTrigger>
+                <TabsTrigger
+                  value="Inspiration"
+                  className="text-[#75716B] text-base"
+                >
+                  Inspiration
+                </TabsTrigger>
+                <TabsTrigger
+                  value="General"
+                  className="text-[#75716B] text-base"
+                >
+                  General
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+            {/* <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl  bg-[#DAD6D1]">
               Highlight
             </button>
             {category.slice(1).map((tab) => {
@@ -39,13 +65,17 @@ function ArticleSection() {
                   {tab}
                 </button>
               );
-            })}
+            })} */}
           </div>
-          <div className="md:mt-3 md:flex">
+          <div className="relative md:mt-3 md:flex">
             <Input
               type="text"
               placeholder="Search"
               className="w-80 mb-4 gap-4"
+            />
+            <Search
+              className="absolute right-5 top-1/2 transform -translate-y-1/2 text-gray-500 md:right-3 md:top-5"
+              size={18}
             />
           </div>
         </div>
@@ -67,7 +97,7 @@ function ArticleSection() {
           </Select>
         </div>
       </div>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0">
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0 !md:px-0">
         {blogPosts.map((blog, index) => {
           return (
             <BlogCard
@@ -96,7 +126,7 @@ export function BlogCard({
 }) {
   return (
     <div className="flex flex-col gap-4">
-      <a href="" className="relative h-56 sm:h-[360px] ">
+      <a href="" className="relative h-56 sm:h-96 ">
         <img
           src={image}
           alt={title}

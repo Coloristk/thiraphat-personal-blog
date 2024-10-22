@@ -3,7 +3,7 @@ import { Linkedin, Github } from "lucide-react";
 export function Footer() {
   return (
     <footer
-      className="bg-[#EFEEEB] h-36 flex items-center justify-center md:px-32"
+      className="bg-[#EFEEEB] h-36 flex items-center justify-center"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <div className="flex flex-col items-center md:flex-row md:justify-between w-full px-4 md:px-32">

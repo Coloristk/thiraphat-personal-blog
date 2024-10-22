@@ -5,13 +5,13 @@ export function HeroSection() {
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
       <div className="flex flex-col items-center md:flex-row md:items-center md:gap-14 md:px-32">
-        <div className="md:w-1/3 mb-8 md:mb-0 ">
-          <h1 className="text-4xl text-[#26231E]  md:text-6xl md:text-right font-semibold mb-10">
+        <div className="md:w-1/3 mb-8 md:mb-0">
+          <h1 className="text-4xl text-[#26231E] md:text-6xl md:text-right font-semibold mb-10">
             Stay <br className="hidden md:block" />
             Informed, <br />
             Stay Inspired
           </h1>
-          <p className="text-[#75716B] text-lg font-medium">
+          <p className="text-[#75716B] text-lg font-medium md:text-right">
             Discover a World of Knowledge at Your Fingertips. Your Daily Dose of
             Inspiration and Information.
           </p>
