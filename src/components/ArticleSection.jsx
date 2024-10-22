@@ -14,32 +14,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function ArticleSection() {
+function ArticleSection() {
   return (
     <div
       className="bg-[#F9F8F6] md:px-32"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <h2 className="text-2xl text-[#26231E] font-semibold mb-4 px-4">
+      <h2 className="text-2xl text-[#26231E] font-semibold mb-4 px-1">
         Latest articles
       </h2>
       <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center mb-5 md:rounded-2xl">
-        <div className="md:flex md:justify-between md:items-center ">
-          <div className="md:flex md:justify-between md:items-center">
-            <div className="hidden md:flex gap-2 font-medium m-3 justify-center items-center">
-              <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl  bg-[#DAD6D1]">
-                Highlight
-              </button>
-              <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
-                Cat
-              </button>
-              <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
-                Inspiration
-              </button>
-              <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
-                General
-              </button>
-            </div>
+        <div className="md:flex md:justify-between md:items-center">
+          <div className="hidden md:flex gap-2 font-medium m-3 justify-center items-center">
+            <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl  bg-[#DAD6D1]">
+              Highlight
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
+              Cat
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
+              Inspiration
+            </button>
+            <button className="text-[#75716B] h-12 px-4 py-2 rounded-2xl">
+              General
+            </button>
           </div>
           <div className="md:mt-3 md:flex">
             <Input
@@ -163,3 +161,5 @@ export function BlogCard({
     </div>
   );
 }
+
+export default ArticleSection;
