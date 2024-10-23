@@ -110,13 +110,10 @@ export function BlogCard({
       </a>
       <div className="flex flex-col">
         <div className="flex">
-          <span className="bg-green-200 rounded-full text-green-700 px-3 py-1 mb-2">
+          <span className="bg-green-200 rounded-full text-green-700 px-3 py-1 mb-4">
             {category}
           </span>
         </div>
-        <a>
-          <h2 className="font-semibold text-xl px-1">{title}</h2>
-        </a>
         <p className="text-muted-foreground text-[#75716B] text-sm mb-4 flex-grow line-clamp-3 px-1">
           {description}
         </p>
