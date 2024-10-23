@@ -4,6 +4,7 @@ import * as React from "react";
 import { blogPosts } from "./data/blogPost";
 import authorImage from "../assets/author-image.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useState } from "react";
 
 import {
   Select,
@@ -16,7 +17,8 @@ import {
 } from "@/components/ui/select";
 
 function ArticleSection() {
-  const category = ["Highlight", "Cat", "Inspiration", "General"];
+  const categories = ["Highlight", "Cat", "Inspiration", "General"];
+  const [category, setCategory] = useState("");
   return (
     <div
       className="bg-[#F9F8F6] md:px-32"
@@ -25,24 +27,30 @@ function ArticleSection() {
       <h2 className="text-2xl text-[#26231E] font-semibold mb-4 px-4">
         Latest articles
       </h2>
-      <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center mb-5 md:rounded-2xl md:h-28">
-        <div className="md:flex md:justify-between md:items-center">
+      <div className="bg-[#EFEEEB] p-4 rounded-md h-44 justify-center items-center md:rounded-2xl md:h-28">
+        <div className="md:flex md:justify-between md:items-center h-16">
           <div className="hidden md:flex gap-2 font-medium m-3 justify-center items-center">
-            <Tabs className="h-12 w-28 px-4 rounded-2xl ">
-              <TabsList className=" bg-[#EFEEEB] gap-10 ">
-                {category.map((Tabs) => (
+            <Tabs>
+              <TabsList className="bg-[#EFEEEB] gap-10">
+                {categories.map((tabs) => (
                   <TabsTrigger
-                    key={Tabs}
-                    value={Tabs}
-                    className="text-[#75716B] text-base"
+                    key={tabs}
+                    value={tabs}
+                    className={`text-[#75716B] text-base py-3 px-4 rounded-xl
+                      ${
+                        category === tabs
+                          ? "bg-[#DAD6D1] text-black"
+                          : "hover:bg-[#F9F6F8]"
+                      }`}
+                    onClick={() => setCategory(tabs)}
                   >
-                    {Tabs}
+                    {tabs}
                   </TabsTrigger>
                 ))}
               </TabsList>
             </Tabs>
           </div>
-          <div className="relative md:mt-3 md:flex">
+          <div className="relative md:mt-6 md:flex">
             <Input
               type="text"
               placeholder="Search"
@@ -56,12 +64,15 @@ function ArticleSection() {
         </div>
         <div className="md:hidden w-full">
           <h6 className="px-1 text-[#75716B] font-medium">Category</h6>
-          <Select>
+          <Select
+            value={category}
+            onValueChange={(value) => setCategory(value)}
+          >
             <SelectTrigger className="w-80">
               <SelectValue placeholder="Highlight" />
             </SelectTrigger>
             <SelectContent>
-              {category.map((cat) => {
+              {categories.map((cat) => {
                 return (
                   <SelectItem key={cat} value={cat}>
                     {cat}
@@ -72,7 +83,7 @@ function ArticleSection() {
           </Select>
         </div>
       </div>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0 !md:px-0">
+      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0 !md:px-0 mt-8">
         {blogPosts.map((blog, index) => {
           return (
             <BlogCard
