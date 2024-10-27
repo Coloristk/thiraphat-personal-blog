@@ -19,22 +19,34 @@ import {
 
 function ArticleSection() {
   const categories = ["Highlight", "Cat", "Inspiration", "General"];
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Highlight");
   const [post, setPost] = useState([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://blog-post-project-api.vercel.app/posts?page=${page}&limit=${category}`
+        );
+        setPost((prevPost) => [...prevPost, ...response.data.posts]);
+        setIsLoading(false);
+        if (response.data.currentPage >= response.data.totalPages) {
+          setHasMore(false);
+        }
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
     fetchData();
-  }, []);
+  }, [page, category]);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://blog-post-project-api.vercel.app/posts`
-      );
-      setPost(response.data.posts);
-    } catch (error) {
-      console.log(error);
-    }
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -61,7 +73,12 @@ function ArticleSection() {
                           ? "bg-[#DAD6D1] text-black"
                           : "hover:bg-[#F9F6F8]"
                       }`}
-                      onClick={() => setCategory(tabs)}
+                      onClick={() => {
+                        setCategory(tabs),
+                          setPost([]),
+                          setPage(1),
+                          setHasMore(true);
+                      }}
                     >
                       {tabs}
                     </TabsTrigger>
@@ -85,7 +102,9 @@ function ArticleSection() {
             <h6 className="px-1 text-[#75716B] font-medium">Category</h6>
             <Select
               value={category}
-              onValueChange={(value) => setCategory(value)}
+              onValueChange={(value) => {
+                setCategory(value), setPost([]), setPage(1), setHasMore(true);
+              }}
             >
               <SelectTrigger className="w-80">
                 <SelectValue placeholder="Highlight" />
@@ -121,6 +140,16 @@ function ArticleSection() {
             );
           })}
         </article>
+        {hasMore && (
+          <div className="text-center mt-8 pb-8">
+            <button
+              onClick={handleLoadMore}
+              className="hover:text-muted-foreground font-medium underline"
+            >
+              {isLoading ? "Loading..." : "View more"}
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
