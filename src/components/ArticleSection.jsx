@@ -83,7 +83,7 @@ function ArticleSection() {
           </Select>
         </div>
       </div>
-      <article className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 md:px-0 !md:px-0 mt-8">
+      <article className="grid grid-cols-1 px-4 md:grid-cols-2 gap-8 md:px-0 mt-8">
         {blogPosts.map((blog, index) => {
           return (
             <BlogCard
