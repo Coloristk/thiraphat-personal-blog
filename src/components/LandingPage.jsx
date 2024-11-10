@@ -5,8 +5,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/ui/dropdown-menu";
 import { Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function HeroSection() {
   return (
@@ -53,19 +54,29 @@ export function HeroSection() {
 }
 
 export function NavBar() {
+  const navigate = useNavigate();
   return (
     <nav
       className="bg-[#F9F8F6] w-full h-20 py-3 px-6 border-b border-solid border-[#DAD6D1] flex items-center md:flex justify-between md:py-4 md:px-32"
       style={{ fontFamily: "Poppins, sans-serif" }}
     >
-      <a href="" className="text-2xl font-bold no-underline">
+      <button
+        className="text-black text-2xl font-bold no-underline"
+        onClick={() => navigate("/")}
+      >
         hh<span className="text-green-500">.</span>
-      </a>
+      </button>
       <div className="hidden md:flex space-x-4">
-        <button className="flex items-center py-3 px-10 gap-2 rounded-full border-solid border border-[#75716B] font-medium">
+        <button
+          className="flex items-center py-3 px-10 gap-2 rounded-full border-solid border border-[#75716B] font-medium"
+          onClick={() => navigate("/login")}
+        >
           Log in
         </button>
-        <button className="flex items-center py-3 px-10 gap-2 bg-[#26231E] rounded-full border-solid border border-[#75716B] text-white font-medium">
+        <button
+          className="flex items-center py-3 px-10 gap-2 bg-[#26231E] rounded-full border-solid border border-[#75716B] text-white font-medium"
+          onClick={() => navigate("/signup")}
+        >
           Sign up
         </button>
       </div>
@@ -74,12 +85,18 @@ export function NavBar() {
           <Menu />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-screen rounded-none mt-4 flex flex-col gap-6 py-10 px-6">
-          <a className="px-8 py-3 mx-4 mt-4 rounded-full text-center text-black border border-black no-underline">
+          <button
+            className="px-8 py-3 mx-4 mt-4 rounded-full text-center text-black border border-black no-underline"
+            onClick={() => navigate("/login")}
+          >
             Login
-          </a>
-          <a className="px-8 py-3 mx-4 mb-4 rounded-full text-center text-white bg-black border no-underline">
+          </button>
+          <button
+            className="px-8 py-3 mx-4 mb-4 rounded-full text-center text-white bg-black border no-underline"
+            onClick={() => navigate("/signup")}
+          >
             Sign up
-          </a>
+          </button>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>
