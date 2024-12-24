@@ -33,7 +33,12 @@ function ArticleSection() {
         const response = await axios.get(
           `https://blog-post-project-api.vercel.app/posts?page=${page}&limit=${category}`
         );
-        setPost((prevPost) => [...prevPost, ...response.data.posts]);
+        if (page === 1) {
+          setPost(response.data.posts);
+        } else {
+          setPost((prevPost) => [...prevPost, ...response.data.posts]);
+        }
+
         setIsLoading(false);
         if (response.data.currentPage >= response.data.totalPages) {
           setHasMore(false);

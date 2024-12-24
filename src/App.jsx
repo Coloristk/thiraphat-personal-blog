@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./page/HomePage";
 import ViewPostPage from "./page/ViewPostPage";
+import { Toaster } from "sonner";
 
 function App() {
   return (
@@ -12,6 +13,11 @@ function App() {
           <Route path="/post/:postId" element={<ViewPostPage />}></Route>
         </Routes>
       </BrowserRouter>
+      <Toaster
+        toastOptions={{
+          unstyled: true,
+        }}
+      />
     </>
   );
 }
