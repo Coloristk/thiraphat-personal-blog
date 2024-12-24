@@ -1,6 +1,6 @@
 import { Linkedin, Github } from "lucide-react";
 
-export function Footer() {
+function Footer() {
   return (
     <footer
       className="bg-[#EFEEEB] h-36 flex items-center justify-center md:px-32"
@@ -30,7 +30,7 @@ export function Footer() {
             G
           </a>
         </div>
-        <a href="" className="text-[#26231E] font-medium mx-3">
+        <a href="/" className="text-[#26231E] font-medium mx-3">
           Home page
         </a>
       </div>
